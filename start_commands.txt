@@ -1,0 +1,17 @@
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+minikube start --driver=docker
+
+minikube dashboard
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+kubectl apply -f <Name_file>.yaml
+
+kubectl expose deployment <deployment-name> --type=NodePort --port=<port> --target-port=<target-port> --name=<service-name>
+kubectl expose deployment <deployment-name> --type=LoadBalancer --port=<port> --target-port=<target-port> --name=<service-name>
+
+minikube service mysql --url
+

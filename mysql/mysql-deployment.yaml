@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: byteslivres-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: byteslivres-mysql
+  template:
+    metadata:
+      labels:
+        app: byteslivres-mysql
+    spec:
+      containers:
+      - name: byteslivres-mysql
+        image: mysql:5.7.10
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "12345"
+        - name: MYSQL_DATABASE
+          value: "teste"
+        ports:
+        - containerPort: 3306
+

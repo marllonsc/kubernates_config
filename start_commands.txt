@@ -10,8 +10,12 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 kubectl apply -f <Name_file>.yaml
 
-kubectl expose deployment <deployment-name> --type=NodePort --port=<port> --target-port=<target-port> --name=<service-name>
+kubectl expose deployment ingress-nginx-controller --type=NodePort --port=8080 --target-port=8080 --name=jenkins_exposed
 kubectl expose deployment <deployment-name> --type=LoadBalancer --port=<port> --target-port=<target-port> --name=<service-name>
+
+kubectl expose pod <pod-name> --type=<service-type> --port=<port> --target-port=<target-port> --name=<service-name>
+kubectl expose pod my-pod --type=ClusterIP --port=80 --target-port=8080 --name=my-service
+
 
 minikube service mysql --url
 

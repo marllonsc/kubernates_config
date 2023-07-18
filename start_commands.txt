@@ -21,3 +21,8 @@ kubectl expose pod my-pod --type=ClusterIP --port=80 --target-port=8080 --name=m
 
 minikube service mysql --url
 
+#let dashboard public
+ kubectl proxy --address='0.0.0.0' --disable-filter=true
+
+http://<IP_server>:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/workloads?namespace=_all
+

@@ -1,0 +1,74 @@
+If you want to redirect a hostname to another URL on a Linux system, you generally need to use a web server. Here's how you can set up a simple redirect using Apache or Nginx:
+
+### Using Apache:
+
+1. **Install Apache:**
+   If you don't have Apache installed, you can install it with the following command:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install apache2
+   ```
+
+2. **Configure a Virtual Host:**
+   Edit the Apache configuration file for your virtual host. Open the configuration file in a text editor:
+
+   ```bash
+   sudo nano /etc/apache2/sites-available/your-domain.conf
+   ```
+
+   Add the following configuration, replacing `your-domain.com` with your actual domain and `https://new-domain.com` with the URL you want to redirect to:
+
+   ```apache
+   <VirtualHost *:80>
+       ServerName your-domain.com
+       Redirect permanent / https://new-domain.com
+   </VirtualHost>
+   ```
+
+3. **Enable the Site and Restart Apache:**
+   Enable the site and restart Apache:
+
+   ```bash
+   sudo a2ensite your-domain.conf
+   sudo systemctl restart apache2
+   ```
+
+### Using Nginx:
+
+1. **Install Nginx:**
+   If you don't have Nginx installed, you can install it with the following command:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install nginx
+   ```
+
+2. **Configure a Server Block:**
+   Edit the Nginx configuration file for your server block:
+
+   ```bash
+   sudo nano /etc/nginx/sites-available/your-domain
+   ```
+
+   Add the following configuration, replacing `your-domain.com` with your actual domain and `https://new-domain.com` with the URL you want to redirect to:
+
+   ```nginx
+   server {
+       listen 80;
+       server_name your-domain.com;
+       return 301 https://new-domain.com$request_uri;
+   }
+   ```
+
+3. **Enable the Site and Restart Nginx:**
+   Enable the site and restart Nginx:
+
+   ```bash
+   sudo ln -s /etc/nginx/sites-available/your-domain /etc/nginx/sites-enabled
+   sudo systemctl restart nginx
+   ```
+
+After making these changes, when someone accesses `your-domain.com` in a web browser, they will be redirected to `https://new-domain.com`.
+
+Remember to replace `your-domain.com` and `https://new-domain.com` with your actual domain and the desired redirect URL.

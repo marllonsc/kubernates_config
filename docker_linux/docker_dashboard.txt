@@ -1,0 +1,8 @@
+Run the Portainer container using the following command:
+
+docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce
+  
+This command pulls the Portainer Community Edition image from Docker Hub, runs it as a detached container, maps port 9000 to the host, and mounts the Docker socket for communication with the Docker daemon.
+
+Access Portainer Dashboard
+Open your web browser and go to http://localhost:9000. You will be prompted to set up an admin password. Follow the on-screen instructions to complete the setup.

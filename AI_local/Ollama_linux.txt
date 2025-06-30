@@ -1,0 +1,49 @@
+🐧 Instalando e rodando modelos com Ollama no Linux
+✅ Passo 1: Instalar o Ollama
+Abra o terminal e execute:
+
+curl -fsSL https://ollama.com/install.sh | sh
+Esse comando baixa e instala o Ollama no seu sistema.
+
+✅ Passo 2: Rodar um modelo
+Por exemplo, para rodar o modelo Llama 3 (7B), execute:
+
+ollama run llama3
+Ele vai baixar o modelo na primeira vez (uns ~4-8GB, dependendo do modelo) e depois já começa a funcionar.
+
+✅ Modelos que você pode testar:
+Modelo	Descrição	Comando
+llama3	Meta Llama 3 (bem preciso)	ollama run llama3
+mistral	Leve, rápido, ótimo para português	ollama run mistral
+phi3	Leve, muito bom em raciocínio	ollama run phi3
+codellama	Focado em programação	ollama run codellama
+llava	Multimodal (imagem + texto)	ollama run llava
+
+👉 Veja todos os modelos aqui: https://ollama.com/library
+
+✅ Passo 3: Usar o Ollama no Python
+Instale a biblioteca:
+
+pip install ollama
+Exemplo de código Python:
+
+import ollama
+
+response = ollama.chat(
+    model='llama3',
+    messages=[
+        {'role': 'user', 'content': 'Qual a distância da Terra até Marte?'}
+    ]
+)
+
+print(response['message']['content'])
+Simples assim. Ele usa a API local que roda na sua máquina, sem depender da internet ou da OpenAI.
+
+✅ Passo 4 (opcional): Interface gráfica (GUI)
+Se quiser algo com interface, pode usar:
+
+LM Studio: https://lmstudio.ai (super amigável e simples)
+
+Ollama WebUI: com projetos como Open WebUI, que dá uma interface parecida com o ChatGPT.
+
+

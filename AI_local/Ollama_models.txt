@@ -1,0 +1,47 @@
+✅ 1. Usar modelos menores
+Alguns modelos são otimizados para máquinas com pouca RAM:
+
+Modelo	RAM mínima	Comando	Descrição
+phi3:mini	~4GB	ollama run phi3:mini	Muito leve e inteligente
+gemma:2b	~4GB	ollama run gemma:2b	Da Google, bem leve
+mistral:instruct	~5GB	ollama run mistral:instruct	Equilíbrio bom
+tinyllama	~3GB	ollama run tinyllama	Bem pequeno, respostas simples
+
+✅ Tente primeiro:
+
+ollama run phi3:mini
+Ou:
+
+ollama run gemma:2b
+Esses rodam em quase qualquer máquina.
+
+✅ 2. Usar quantização mais leve
+Por padrão, Ollama usa modelos quantizados em Q4_K_M (boa performance e tamanho). Você pode tentar buscar versões mais compactas, mas o Ollama já entrega o melhor equilíbrio possível.
+
+✅ 3. Liberar memória RAM
+Feche outros programas pesados (Chrome, VSCode, etc.).
+
+Se possível, aumente sua swap temporariamente para ajudar na RAM.
+
+Aumentar SWAP (emergencial):
+
+sudo fallocate -l 8G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+Verifique se funcionou:
+
+free -h
+Depois, se quiser remover:
+
+sudo swapoff /swapfile
+sudo rm /swapfile
+⚠️ Atenção: SWAP em disco é mais lento que RAM, mas permite rodar modelos maiores se for só para testes.
+
+✅ 4. Usar Interface Web mais leve (LM Studio)
+O LM Studio gerencia melhor o consumo, permite rodar até modelos maiores com menos crashes, dependendo de como eles fazem gerenciamento de memória.
+
+🚀 Resumo prático
+Se você rodar:
+
+ollama run phi3:mini

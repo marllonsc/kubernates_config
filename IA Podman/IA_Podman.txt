@@ -1,0 +1,8 @@
+Resumo
+Alternativa	Fácil de rodar?	Suporta Spring AI?	Comando Podman
+Ollama	✅ Sim	✅ Nativo	podman run -p 11434:11434 ollama/ollama
+LocalAI	✅ Sim	✅ via OpenAI API	podman run -p 8080:8080 quay.io/go-skynet/local-ai
+LM Studio	⚠️ GUI	✅ via OpenAI API	Não ideal para Podman (focado em desktop)
+TextGen UI	⚠️ Intermediário	⚠️ Indireto (via API)	oobabooga/text-generation-webui
+
+

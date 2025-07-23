@@ -1,0 +1,7 @@
+services:
+  textgen:
+    image: oobabooga/text-generation-webui
+    ports:
+      - 7860:7860
+    volumes:
+      - ./models:/models

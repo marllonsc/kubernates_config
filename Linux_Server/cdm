@@ -1,0 +1,22 @@
+Build inside Minikube (already happening):
+
+eval $(minikube docker-env)
+docker build -t python-proxy .
+
+
+Deploy inside Minikube:
+
+kubectl run python-proxy --image=python-proxy --port=9091
+kubectl expose pod python-proxy --type=NodePort --port=9091
+
+Get URL:
+
+minikube service python-proxy --url
+
+#image to minikube
+eval $(minikube docker-env) 
+
+#image to docker
+eval $(minikube docker-env -u)
+
+
